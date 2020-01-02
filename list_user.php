@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
@@ -192,44 +193,27 @@
                                                   else{
                                                     echo "Not Premium";
                                                   }?></td>
-                                                  <td><a href="javascript:void(0);" data-href="userInfo/<?php $row->UserID;?>" class="openPopup">View</a></td>
+                                                  <td><a href="javascript:void(0);" data-href="<?php echo "userinfo.php?userid=".$data1['UserID'];?>" class="openPopup">View</a></td>
                                                   <div class="modal fade" id="myModal" role="dialog">
-                                       <div class="modal-dialog">
+                                                 
+                        <div class="modal-dialog">
     
-                                              <!-- Modal content-->
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                        <h4 class="modal-title">Profile</h4>
-                                        <!-- <img src="dist/img/user3-128x128.jpg" alt=""> -->
-               
-                                                  </div>
+                    <!-- Modal content-->
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">User Info</h4>
+                      </div>
+                          <div class="modal-body">
 
-                                                        <div class="modal-body">
-
-                                                           <p>Name:<?php echo $data1['FirstName'];?></p>
-                                                              <p>Gender:</p>
-                                                               <p>Age:</p>
-                                                             <p>Email:</p>
-                                                                  <p>Country:</p>
-                                                        <p>Premium User:</p>
-                                                              <p>BodyType</p>
-                                                          <p>CountriesVisitList</p>
-                                                            <p>DOB</p>
-                                                        <p>Drinks</p>
-                                                       <p>Education</p>
-                                                            <p>Height</p>
-                                                         <p>Income</p>
-                                                             <p>Smokes</p>
-            
-          
-                                             </div>
-                                                         <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    </div>
-                                                  </div>
+                        </div>
+                        <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
       
-                                    </div>
-                                            </div>
+              </div>
+          </div>
                                                   <td><A href="#">Edit</a>/<a href="#">Delete</a></td>
                                                   <td><select>
                                                         <option value="Block">Block</option>
@@ -338,7 +322,9 @@
 <script>
 $(document).ready(function () {
                 $('.openPopup').on('click', function () {
+                  
                     var dataURL = $(this).attr('data-href');
+                   
                     $('.modal-body').load(dataURL, function () {
                         $('#myModal').modal({show: true});
                     });
