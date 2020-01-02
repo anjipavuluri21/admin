@@ -1,0 +1,10 @@
+{
+    "name": "system/admin",
+    "description": "admin travelmates",
+    "type": "project",
+    "license": "gnu3",
+    "minimum-stability": "dev",
+    "require": {
+        "kreait/firebase-php": "^4.17.0"
+    }
+}
