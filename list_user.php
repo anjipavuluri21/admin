@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +76,7 @@
                with font-awesome or any other icon font library -->
           
          <li class="nav-item">
-            <a href="index.html" class="nav-link">
+            <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -130,7 +131,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List User</li>
+              <li class="breadcrumb-item active">All Users</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -172,7 +173,8 @@
                                             </tr>
                                         </thead>
                                         <tbody> 
-                                          <?php 
+                                          <?php
+                                           
                                           include("retrive.php");
                                           $i=1;
                                           foreach($value as $row =>$data1){
@@ -201,8 +203,8 @@
                     <!-- Modal content-->
                       <div class="modal-content">
                       <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">User Info</h4>
+                        
+                            <h4 class="modal-title" style="text-align:center">Profiles</h4>
                       </div>
                           <div class="modal-body">
 
@@ -214,7 +216,7 @@
       
               </div>
           </div>
-                                                  <td><A href="#">Edit</a>/<a href="#">Delete</a></td>
+                                                  <td><a href="update.php/<?php echo $data1['UserID'];?>">Edit</a>/<a href="#">Delete</a></td>
                                                   <td><select>
                                                         <option value="Block">Block</option>
                                                         <option value="Unblock">Unblock</option>

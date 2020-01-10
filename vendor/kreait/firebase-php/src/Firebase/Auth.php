@@ -194,6 +194,8 @@ class Auth
      * @throws Exception\AuthException
      * @throws Exception\FirebaseException
      */
+
+
     public function getUserByPhoneNumber($phoneNumber): UserRecord
     {
         $phoneNumber = $phoneNumber instanceof PhoneNumber ? $phoneNumber : new PhoneNumber($phoneNumber);

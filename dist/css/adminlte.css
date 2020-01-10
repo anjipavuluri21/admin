@@ -19516,26 +19516,13 @@ html.maximized-card {
   text-align: center;
 }
 
-.login-logo a,
-.register-logo a {
-  color: #495057;
-}
 
-.login-page,
-.register-page {
-  -ms-flex-align: center;
-  align-items: center;
-  background: #e9ecef;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100vh;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
+
+
 
 .login-box,
 .register-box {
-  width: 360px;
+  width: 50%;
 }
 
 @media (max-width: 576px) {
@@ -28565,3 +28552,23 @@ a.text-muted:hover {
     font-weight: bold;
 }
 /* Popup box BEGIN */
+.login-box {
+  width: 450px;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #252222;
+  background-color:white;
+}
+.login-card-body{
+ background-color: white;
+
+}
+.card_body{
+  /* background-color: yellow; */
+  margin: 20px;
+}
+.input-group
+{
+  border: yellow;
+  border-radius: 20px;
+}

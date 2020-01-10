@@ -19,7 +19,7 @@
     ->equalTo("0_1_1_1_0")
     ->getSnapshot()
     ->numChildren();
-
+    
     $reference3 = $database->getReference('Users')
     ->orderByChild('UserStatus')
     ->equalTo("0_1_1_0_0")
@@ -28,11 +28,12 @@
 
 
     $Total_premium_users=$reference+$reference1+$reference2+$reference3;
-    // var_dump($Total_premium_users);
-    $reference = $database->getReference('Users')
-       ->orderByKey()
-    ->getSnapshot();
-    var_dump($reference);
+    
+    var_dump($Total_premium_users);
+  
+
+
+  
 
    
 

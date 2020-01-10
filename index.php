@@ -9,24 +9,24 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="dist/css/adminlte.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>dist/css/adminlte.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
@@ -60,8 +60,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/travelmates.png" alt="travelmates logo" 
-           style="opacity: .8">
+      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px">
       <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -105,7 +104,7 @@
             </a>
           </li>
            <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="login.php" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>
@@ -147,22 +146,35 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
-              <div class="inner">
-              
-                <h3><?php 
+              <div class="inner" >
+              <p style="text-align:center;">Total Users</p>
+                <h3 style="text-align:center;"><?php 
                 $reference = $database->getReference('Users')
                 ->getSnapshot()
                 ->numChildren();
                 echo $reference;
                 ?></h3>
-                <p>Total Users</p>
-
+                
+               
+                <p>Male: <?php $ref=$database->getReference('Users')
+                            ->orderByChild('Gender')
+                            ->equalTo("Male")
+                            ->getSnapshot()
+                            ->numChildren();
+                    echo $ref;?></p>
+                <p>Female: <?php $ref=$database->getReference('Users')
+                            ->orderByChild('Gender')
+                            ->equalTo("Female")
+                            ->getSnapshot()
+                            ->numChildren();
+                    echo $ref;?></p>
               </div>
+             
               <div class="icon">
-              <i class="fas fa-list"></i>
+              <!-- <i class="fas fa-list"></i> -->
               </div>
               
-              <a href="list_user.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="list_user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               
             </div>
 
@@ -172,13 +184,16 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>495</h3>
+              <p style="text-align:center;">Online Users</p>
+                <h3 style="text-align:center;">495</h3>
 
-                <p>Online Users</p>
+               
+                <p>Male: </p>
+                <p>Female:</p>
               </div>
               <div class="icon">
                 
-                <i class="fas fa-signal"></i>
+                <!-- <i class="fas fa-signal"></i> -->
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -188,12 +203,27 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>120</h3>
+              <p style="text-align:center;">New Users</p>
+                <h3 style="text-align:center;"><?php 
+                  $data=date("Y/m/d") ;
+                  //    var_dump($data);
+                   $new_user = $database->getReference('Users')
+                      ->orderByChild('DataRegistration')
+                      
+                       ->startAt($data)
+                      // ->endAt('2020/01/07')
+                      ->getSnapshot()
+                       ->numChildren();
+                       echo $new_user;
+                        ?>
+                  </h3>
 
-                <p>New Users</p>
+                
+                <p>Male: </p>
+                <p>Female:</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <!-- <i class="ion ion-person-add"></i> -->
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -203,7 +233,8 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php 
+              <p style="text-align:center;">Total Premium Users</p>
+                <h3 style="text-align:center;"><?php 
                 $reference = $database->getReference('Users')
                 ->orderByChild('UserStatus')
                 ->equalTo("1_1_1_1_0")
@@ -238,10 +269,48 @@
                 
                 ?></h3>
 
-                <p>Total Premium Users</p>
+                
+                <p>Male: <?php 
+                 $male_online = $database->getReference('Users')
+                 ->orderByChild('UserStatus')
+                 ->equalTo("1_1_1_1_0")
+                 ->getSnapshot()
+                 ->numChildren();
+                 // var_dump($reference);
+             
+                 $male_offline = $database->getReference('Users')
+                 ->orderByChild('UserStatus')
+                 ->equalTo("1_1_1_0_0")
+                 ->getSnapshot()
+                 ->numChildren();
+
+                 $male_count= $male_online+$male_offline;
+
+                 echo "$male_count";
+                ?></p>
+
+                <p>Female: <?php 
+                  $female_online = $database->getReference('Users')
+                  ->orderByChild('UserStatus')
+                  ->equalTo("0_1_1_1_0")
+                  ->getSnapshot()
+                  ->numChildren();
+                  // var_dump($reference);
+              
+                  $Female_offline = $database->getReference('Users')
+                  ->orderByChild('UserStatus')
+                  ->equalTo("0_1_1_0_0")
+                  ->getSnapshot()
+                  ->numChildren();
+
+                  $female_count= $female_online+$Female_offline;
+
+                  echo "$female_count";
+
+                ?></p></p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                
 
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -273,39 +342,39 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/moment/moment.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/demo.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 

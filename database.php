@@ -4,6 +4,7 @@ require_once './vendor/autoload.php';
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
+use kreait\firebase\Auth;
 
 $serviceAccount = ServiceAccount::fromJsonFile(__DIR__ .'/secret/socialapptest1-4f4d3-5d4d7d344d5b.json');
 
@@ -34,5 +35,11 @@ $database = $firebase->getDatabase();
   //  ->equalTo("Male")
     // ->getSnapshot()->numChildren();
 // var_dump($ref);
+
+//defining base url
+$url_details=$_SERVER['HTTP_HOST'];
+$url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);/*For Getting the project(Hosting Name)*/
+$final_url='http://'.$url_details;
+define('PROJECT_BASEPATH',$final_url);
 
 ?>
