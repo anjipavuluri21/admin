@@ -1,4 +1,13 @@
-<?php include('database.php');?>
+<?php 
+session_start();
+include('database.php');
+$url_details=$_SERVER['HTTP_HOST'];
+$url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);/*For Getting the project(Hosting Name)*/
+ $final_url='http://'.$url_details;
+ define('PROJECT_BASEPATH',$final_url);
+
+// echo $_SESSION["email"];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +20,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
@@ -28,39 +37,21 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
   
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Navbar -->
-  <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-   
-     <ul class="navbar-nav ml-auto">
-       <li class="nav-item">
-          <a class="nav-link" href="#" title="Login">
-          <i class="fas fa-sign-in-alt"></i>
-
-        </a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#" title="logout">
-          <i class="fas fa-power-off"></i>
-        </a>
-      </li>
-    </ul>
-   
-    
-  </nav> -->
-  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px">
+      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"><?php echo $_SESSION["user_data"]["name"];?>
+      
+      
       <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -81,7 +72,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="list_user.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>list_user.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 List User
@@ -90,7 +81,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="search.html" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>search.php" class="nav-link">
               <i class="nav-icon fas fa-search"></i>
               <p>Search User</p>
             </a>
@@ -98,13 +89,13 @@
          
          
           <li class="nav-item">
-            <a href="country.html" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>
               <p>CountryWise</p>
             </a>
           </li>
            <li class="nav-item">
-            <a href="login.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>logout.php" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>
@@ -156,13 +147,15 @@
                 ?></h3>
                 
                
-                <p>Male: <?php $ref=$database->getReference('Users')
+                <p>Male: <?php 
+                $ref=$database->getReference('Users')
                             ->orderByChild('Gender')
                             ->equalTo("Male")
                             ->getSnapshot()
                             ->numChildren();
                     echo $ref;?></p>
-                <p>Female: <?php $ref=$database->getReference('Users')
+                <p>Female: <?php 
+                $ref=$database->getReference('Users') 
                             ->orderByChild('Gender')
                             ->equalTo("Female")
                             ->getSnapshot()
@@ -206,7 +199,7 @@
               <p style="text-align:center;">New Users</p>
                 <h3 style="text-align:center;"><?php 
                   $data=date("Y/m/d") ;
-                  //    var_dump($data);
+                    //  var_dump($data);
                    $new_user = $database->getReference('Users')
                       ->orderByChild('DataRegistration')
                       
@@ -378,14 +371,14 @@
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use-->
+     https://firebase.google.com/docs/web/setup#available-libraries 
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> 
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> 
 
 <script>
-  // Your web app's Firebase configuration
+  Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyBWMk06jEJkgLx4FGFgLk0L10WHWb9GmAU",
     authDomain: "socialapptest1-4f4d3.firebaseapp.com",
