@@ -1,3 +1,9 @@
+<?php
+$url_details=$_SERVER['HTTP_HOST'];
+$url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);/*For Getting the project(Hosting Name)*/
+ $final_url='http://'.$url_details;
+ define('PROJECT_BASEPATH',$final_url);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,23 +13,23 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
@@ -31,27 +37,6 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Navbar -->
-  <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-   
-     <ul class="navbar-nav ml-auto">
-       <li class="nav-item">
-          <a class="nav-link" href="#" title="Login">
-          <i class="fas fa-sign-in-alt"></i>
-
-        </a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#" title="logout">
-          <i class="fas fa-power-off"></i>
-        </a>
-      </li>
-    </ul>
-   
-    
-  </nav> -->
-  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -74,13 +59,13 @@
                with font-awesome or any other icon font library -->
           
          <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="list_user.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>list_user.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 List User
@@ -89,7 +74,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="search.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>search.php" class="nav-link">
               <i class="nav-icon fas fa-search"></i>
               <p>Search User</p>
             </a>
@@ -97,13 +82,13 @@
          
          
           <li class="nav-item">
-            <a href="country.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>
               <p>CountryWise</p>
             </a>
           </li>
            <li class="nav-item">
-            <a href="login.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>logout.php" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>
@@ -224,49 +209,49 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/moment/moment.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/demo.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="<?php echo PROJECT_BASEPATH;?>dist/js/demo.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable();

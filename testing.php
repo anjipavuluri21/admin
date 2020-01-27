@@ -1,12 +1,10 @@
 <?php 
 $conn=include("database.php");
-$reference = $database->getReference('Users')
-    
-                ->orderByKey('UserID')
-                ->equalTo('0BMIN0RkGWZuGVh7dkU6UjRZ0zz2')
-                
-                ->getSnapshot();
 
-             var_dump($reference);
+$reference = $database->getReference('Users');
+    
+    $snapshot = $reference->getSnapshot();
+    $value = $snapshot->getChild('iVfaAXU6i7TFbRUXv8DG3Sd67yy1')->getChild('FirstName')->getValue();
+    var_dump($value);
     
 ?>

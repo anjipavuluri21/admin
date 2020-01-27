@@ -1,9 +1,13 @@
 <?php 
-    $conn=include("database.php");
-    $reference = $database->getReference('Users');
     
-    $snapshot = $reference->getSnapshot();
+    include_once('database.php');
+    // $reference = $auth->getReference('Users');
+    
+    $snapshot = $ref->getSnapshot();
     $value = $snapshot->getValue();
     // var_dump($value );
+
+
+
        
 ?>

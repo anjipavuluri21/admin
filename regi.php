@@ -7,17 +7,17 @@
     $new_user = $database->getReference('Users')
 
     //    ->orderByChild('DataRegistration')
-       ->orderByChild("Gender")
-           ->equalTo("Male")
-        // ->startAt($data)
+      //  ->orderByChild("Gender")
+         //   ->equalTo("Male")
+        ->startAt($data)
        // ->endAt('2020/01/07')
-    //    ->shallow()
-    //    ->getSnapshot()
-    //    ->numChildren();
+      //  ->shallow()
+       ->getSnapshot()
+      //  ->numChildren();
     
     ->getSnapshot();
- var_dump($new_user);
- exit;
+//  var_dump($new_user);
+//  exit;
 $query = $new_user->where('Gender', '=', Male);
 // $documents = $query->documents();
 var_dump($query);

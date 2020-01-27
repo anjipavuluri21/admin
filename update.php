@@ -1,4 +1,15 @@
-<?php include('retrive.php');?>
+<?php 
+
+include("retrive.php");
+
+
+//defining base url
+ $url_details=$_SERVER['HTTP_HOST'];
+$url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);/*For Getting the project(Hosting Name)*/
+ $final_url='http://'.$url_details;
+ define('PROJECT_BASEPATH',$final_url);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,13 +65,13 @@
           
           
          <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="list_user.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>list_user.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 List User
@@ -69,7 +80,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="search.html" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>search.php" class="nav-link">
               <i class="nav-icon fas fa-search"></i>
               <p>Search User</p>
             </a>
@@ -77,13 +88,13 @@
          
          
           <li class="nav-item">
-            <a href="country.html" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>
               <p>CountryWise</p>
             </a>
           </li>
            <li class="nav-item">
-            <a href="login.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>login.php" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>
@@ -104,12 +115,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Update</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard </li>
+              <li class="breadcrumb-item active">Update Data </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -118,33 +129,50 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-       <div class="container">
-  <form action="update_data.php" method="post">
+
+   <section class="content">
+       <div class="container-fluid">
+    <?php 
+    
+    // echo $_GET['userid'];
+    $reference = $database->getReference('Users');
+    $snapshot = $reference->getSnapshot();
+    $first_name = $snapshot->getChild($_GET['userid'])->getChild('FirstName')->getValue();
+    $age = $snapshot->getChild($_GET['userid'])->getChild('Age')->getValue();
+    $country = $snapshot->getChild($_GET['userid'])->getChild('Country')->getValue();
+    $email = $snapshot->getChild($_GET['userid'])->getChild('Email')->getValue();
+    
+
+
+          
+    
+    
+    ?>   
+  <form action="user_update.php" method="post">
     <h2>Update User</h2>
     <div class="row">
-      <div class=col-md-4>
+      <div class=col-md-3>
       
         <div class="form-group">
           <label for="first">Name</label>
-          <input type="text" name="name" class="form-control" placeholder="" id="first" value="<?php echo $data1['FirstName'];?>">
+          <input type="text" name="name" class="form-control" placeholder="" id="first" value="<?php echo $first_name;?>">
   
       </div>
         
         <div class="form-group">
           <label for="last">Age</label>
-          <input type="text" name="age" class="form-control" placeholder="" id="last" value="">
+          <input type="text" name="age" class="form-control" placeholder="" id="last" value="<?php echo $age;?>">
      
       </div>
     
         <div class="form-group">
           <label for="company">Country</label>
-          <input type="text" name="country" class="form-control" placeholder="" id="company" value="">
+          <input type="text" name="country" class="form-control" placeholder="" id="company" value="<?php echo $country;?>">
         </div>
 
         <div class="form-group">
           <label for="phone">Email</label>
-          <input type="tel" name="email" class="form-control" id="phone" placeholder="phone" value="">
+          <input type="tel" name="email" class="form-control" id="phone" placeholder="" value="<?php echo $email;?>">
         </div>
 
         <div class="form-group">
@@ -157,12 +185,11 @@
   </div>
     <!--  row   -->
 
-    <button type="update" class="btn btn-primary">Submit</button>
+    <button type="update" name="update" class="btn btn-primary">Submit</button>
   </form>
 </div>
   </section>
 
-      
     
   </div>
   <!-- /.content-wrapper -->

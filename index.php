@@ -269,8 +269,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                  ->equalTo("1_1_1_1_0")
                  ->getSnapshot()
                  ->numChildren();
-                 // var_dump($reference);
-             
+                 
                  $male_offline = $database->getReference('Users')
                  ->orderByChild('UserStatus')
                  ->equalTo("1_1_1_0_0")
@@ -339,9 +338,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo PROJECT_BASEPATH;?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="<?php echo PROJECT_BASEPATH;?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -372,13 +369,13 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use-->
-     https://firebase.google.com/docs/web/setup#available-libraries 
+     <script src="https://firebase.google.com/docs/web/setup#available-libraries"></script> 
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> 
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> 
 
 <script>
-  Your web app's Firebase configuration
+  // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyBWMk06jEJkgLx4FGFgLk0L10WHWb9GmAU",
     authDomain: "socialapptest1-4f4d3.firebaseapp.com",

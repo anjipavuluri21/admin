@@ -1,23 +1,31 @@
 <?php 
 session_start();
 include('database_sql.php');
-$msg="";
 
 if(isset($_POST['login'])){
   $email=$_POST['email'];
   $password=$_POST['password'];
 
-  
- 
-    
+  $sql="select name,email,password from admin where email='".$email."' and password='".$password."' limit 1";
+
+  $result=mysqli_query($conn,$sql);
+  // print_r($result);
+  // exit;
+  $row  = mysqli_fetch_array($result);
+  // print_r($row);
+  // exit;
+    if(is_array($row)){
+      $userdata=['email'=>$row['email'],
+    'name'=>$row['name']
+  ];
+      $_SESSION["user_data"] = $userdata;
+      header('location:index.php');
+    }
+    else{
+       header('location:login.php?Invalid=Please Enter Correct Email and Password');
+    }
 }
-    
-
-
-
-
-
-?>
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +60,7 @@ if(isset($_POST['login'])){
 
       <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Email" requuired>
+          <input type="email" class="form-control" name="email" placeholder="Email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -60,7 +68,7 @@ if(isset($_POST['login'])){
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="Password" requuired>
+          <input type="password" class="form-control" name="password" placeholder="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -101,3 +109,4 @@ if(isset($_POST['login'])){
 
 </body>
 </html>
+
