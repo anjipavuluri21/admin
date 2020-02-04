@@ -142,11 +142,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
     $country = $snapshot->getChild($_GET['userid'])->getChild('Country')->getValue();
     $email = $snapshot->getChild($_GET['userid'])->getChild('Email')->getValue();
     
-
-
-          
-    
-    
     ?>   
   <form action="user_update.php" method="post">
     <h2>Update User</h2>
@@ -155,6 +150,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
       
         <div class="form-group">
           <label for="first">Name</label>
+          <!-- <input type="text" name="uid" class="form-control" placeholder="" id="first" value="<?php echo $_GET['userid'];?>"> -->
           <input type="text" name="name" class="form-control" placeholder="" id="first" value="<?php echo $first_name;?>">
   
       </div>
@@ -177,7 +173,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 
         <div class="form-group">
          
-          <input type="Hidden" name="ref" class="form-control" id="hidden" placeholder="hidden" value="Users/<?php echo $data1; ?>">
+          <input type="hidden" name="uid" class="form-control" id="hidden" placeholder="hidden" value="<?php echo $_GET['userid'];?>">
         </div>
 
               

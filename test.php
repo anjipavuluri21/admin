@@ -1,20 +1,15 @@
 <?php 
 
 include("database.php");
-// $reference = $database->getReference('Users');
-$uid = '01rHXZAeDVV5nCcvzZrhojBeTOX2';
 
-$properties = [
-    'FirstName' => 'Anji'
-];
-
-$updatedUser = $auth->updateUser($uid, $properties);
-
-$request = \Kreait\Auth\Request\UpdateUser::new()
-    ->withDisplayName('Anji');
-
-$updatedUser = $auth->updateUser($uid, $request);
-   
+$ref=$database->getReference('Users')
+// order the reference's children by the values in the field 'height'
+->orderByChild('DataRegistration')
+// limits the result to the first 10 children (in this case: the 10 shortest persons)
+// values for 'height')
+->limitToFirst(10)
+->getSnapshot();
+var_dump($ref);
 
 
 

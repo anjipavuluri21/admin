@@ -1,7 +1,17 @@
 <?php 
 include('database.php');
-$uid = '8Jh59pufJXZKPeEreeWMDGzQSrf2';
+// $uid = '31bzurWoVlVly2lAZ5iTcQK13ul2';
+// print_r($_POST);exit;
+$action=$_POST['action'];
+$uid=$_POST['uid'];
 
-$updatedUser = $auth->enableUser($uid);
-// var_dump($updatedUser);
+// $disable_user = '31bzurWoVlVly2lAZ5iTcQK13ul2';
+if($action == 0){
+    $updatedUser = $auth->disableUser($uid);
+    echo $updatedUser;
+}
+if($action==1){
+    $updatedUser = $auth->enableUser($uid);
+}
+
 ?>

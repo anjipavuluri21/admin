@@ -150,14 +150,14 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                 <p>Male: <?php 
                 $ref=$database->getReference('Users')
                             ->orderByChild('Gender')
-                            ->equalTo("Male")
+                            ->equalTo('Male')
                             ->getSnapshot()
                             ->numChildren();
                     echo $ref;?></p>
                 <p>Female: <?php 
                 $ref=$database->getReference('Users') 
                             ->orderByChild('Gender')
-                            ->equalTo("Female")
+                            ->equalTo('Female')
                             ->getSnapshot()
                             ->numChildren();
                     echo $ref;?></p>
@@ -202,18 +202,31 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                     //  var_dump($data);
                    $new_user = $database->getReference('Users')
                       ->orderByChild('DataRegistration')
-                      
                        ->startAt($data)
+                       ->getValue();
                       // ->endAt('2020/01/07')
-                      ->getSnapshot()
-                       ->numChildren();
-                       echo $new_user;
+                      // ->getSnapshot()
+                      //  ->numChildren();
+                       echo count($new_user);
+                       $Male_count=0;
+                       $Female_count=0;
+                       foreach($new_user as $key =>$value){
+                           // echo $value['Gender']. "\n";
+                           if($value['Gender']=='Male'){
+                              $Male_count++;
+                              
+                           }
+                              else{
+                               $Female_count++;
+                               
+                              }
+                    }
                         ?>
                   </h3>
 
-                
-                <p>Male: </p>
-                <p>Female:</p>
+
+                <p>Male: <?php echo $Male_count;?></p>
+                <p>Female: <?php echo $Female_count;?></p>
               </div>
               <div class="icon">
                 <!-- <i class="ion ion-person-add"></i> -->
@@ -236,7 +249,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                 // var_dump($reference);
            
 
-            
                 $reference1 = $database->getReference('Users')
                 ->orderByChild('UserStatus')
                 ->equalTo("1_1_1_0_0")

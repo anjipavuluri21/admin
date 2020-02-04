@@ -3,6 +3,9 @@
 <html>
     <head>
     <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>dist/css/adminlte.css">
+  
+  
+</script> 
     </head>
     <body>
     <?php 

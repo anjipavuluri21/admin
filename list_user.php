@@ -135,7 +135,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                     <div class="row">
                         <div class="col-12">
 
-
                             <div class="card">
                                 <div class="card-header">
 
@@ -166,9 +165,12 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                                            
                                           include("retrive.php");
                                           $i=1;
+                                          $value = $database->getReference('Users')->orderByChild('DataRegistration')->getValue();
                                           foreach($value as $row =>$data1){
+                                          
                                           //  print_r($data1);
                                           //  exit;
+                                          
                                             ?>
                                         <tr>
                                                   <td><?php echo $i;?></td>
@@ -208,10 +210,10 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                                       </div>
                                     </div>
                                                   <td><a href="update.php?userid=<?php echo $data1['UserID']; ?>">Edit</a>/<a href="delete.php?userid=<?php echo $data1['UserID'];?>">Delete</a></td>
-                                                  
-                                                  <td><select>
-                                                        <option value="Block">Block</option>
-                                                        <option value="Unblock">Unblock</option>
+                                                  <td><select onchange="blockAction(value,'<?php echo $data1['UserID']; ?>')">
+                                                  <option value="" >Select</option>
+                                                        <option value="0" >Block</option>
+                                                        <option value="1" >Unblock</option>
                                                   </select></td>
                                                
                                               </tr>
@@ -322,7 +324,29 @@ $(document).ready(function () {
                         $('#myModal').modal({show: true});
                     });
                 });
+                
             });
+
+
+            function blockAction($action,$uid){
+              confirm("Are you sure to continue !");
+              var values = {'action':$action,'uid':$uid};
+
+              $.ajax({
+                    url: "block.php",
+                    type: "post",
+                    data: values ,
+                    success: function (response) {
+                      // console.log(response);
+                      window.location.reload();
+                        // You will get response from your PHP page (what you echo or print)
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+
+                }
 </script>
 
 
