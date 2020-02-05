@@ -59,7 +59,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column">
@@ -214,16 +213,13 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                            // echo $value['Gender']. "\n";
                            if($value['Gender']=='Male'){
                               $Male_count++;
-                              
-                           }
+                              }
                               else{
                                $Female_count++;
-                               
                               }
                     }
                         ?>
                   </h3>
-
 
                 <p>Male: <?php echo $Male_count;?></p>
                 <p>Female: <?php echo $Female_count;?></p>
@@ -274,7 +270,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                 
                 ?></h3>
 
-                
                 <p>Male: <?php 
                  $male_online = $database->getReference('Users')
                  ->orderByChild('UserStatus')
@@ -325,8 +320,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
       </div>
   </section>
 
-      
-    
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
