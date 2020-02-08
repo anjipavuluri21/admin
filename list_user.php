@@ -94,7 +94,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
             </a>
           </li>
            <li class="nav-item">
-            <a href="<?php echo PROJECT_BASEPATH;?>logout.php" class="nav-link">
+            <a href="<?php echo PROJECT_BASEPATH;?>" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>

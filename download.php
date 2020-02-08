@@ -27,12 +27,12 @@ $storage = new StorageClient([
     'projectId' => '6EGY4iFscBPjs38CJfwDWPg6NrB2'
 ]);
 $bucket = $storage->bucket('gs://socialapptest1-4f4d3.appspot.com/UsersData');
-// $bucket->upload(
-//     fopen('photos/Image_Origin.jpg', 'r')
-// );
-$object = $bucket->object('Image_Origin.jpg');
-    $object->downloadToFile('photos/Image_Origin.jpg');
+$bucket->upload(
+    fopen('photos/Image_Origin.jpg', 'r')
+);
+$object = $bucket->object('Image_Orign.jpg');
+    $object->downloadToFile('photos/Image_Orign.jpg');
     
-    var_Dump($object);
+    echo $object;
 
 ?>

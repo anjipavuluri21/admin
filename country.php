@@ -32,33 +32,11 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Navbar -->
-  <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-   
-     <ul class="navbar-nav ml-auto">
-       <li class="nav-item">
-          <a class="nav-link" href="#" title="Login">
-          <i class="fas fa-sign-in-alt"></i>
-
-        </a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#" title="logout">
-          <i class="fas fa-power-off"></i>
-        </a>
-      </li>
-    </ul>
-   
-    
-  </nav> -->
-  <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.html" class="brand-link">
-      <img src="dist/img/travelmates.png" alt="travelmates logo" 
-           style="opacity: .8">
+    <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px">
       <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -74,13 +52,13 @@
                with font-awesome or any other icon font library -->
           
          <li class="nav-item">
-            <a href="index.html" class="nav-link">
+            <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="list_user.html" class="nav-link">
+            <a href="list_user.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 List User
@@ -89,7 +67,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="search.html" class="nav-link">
+            <a href="search.php" class="nav-link">
               <i class="nav-icon fas fa-search"></i>
               <p>Search User</p>
             </a>
@@ -97,13 +75,13 @@
          
          
           <li class="nav-item">
-            <a href="country.html" class="nav-link">
+            <a href="country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>
               <p>CountryWise</p>
             </a>
           </li>
            <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="login.php" class="nav-link">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>
@@ -160,19 +138,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
-                                             <tr>
-                                                <td>1</td>
-                                                <td>India</td>
-                                                <td>250</td>
-                                                <td>300</td>
+                                        <?php
+                                          include('database.php');
+
+                                        $ref=$database->getReference('Users')
+                                        ->orderByChild('Country')
+                                        ->getSnapshot()
+                                        ->getValue();
+                                        // ->numChildren();
+                                        // var_dump($ref);
+                                        // print_r(array_unique($ref));exit;
+                                        $countries = array_unique(array_column($ref, 'Country'));
+                                        // print_r($countries);
+                                        $i=1;
+                                        foreach($countries as $key=>$value){ ?>
+                                        <tr>
+                                                <td><?php echo $i;?></td>
+                                                <td><?php echo $value;?></td>
+                                                <td></td>
+                                                <td></td>
 
                                             </tr>
-                                           
-                                           
-                                            
 
+                                         <?php $i++; }
+        
+       
+?>
 
+                 
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
