@@ -8,6 +8,9 @@ include('retrive.php');
         $email=$_POST['email'];
         $country=$_POST['country'];
         $uid=$_POST['uid'];
+        $smokes=$_POST['smokes'];
+        $about=$_POST['about'];
+        $countryvisitedlist=$_POST['countryvistedlist'];
 
         $update_query= $database->getReference('Users')
             ->getChild($uid)
@@ -15,7 +18,11 @@ include('retrive.php');
                  'FirstName'=> $name,
                 'Email' => $email,
                 'Age' =>$age,
-                'Country'=>$country
+                'Country'=>$country,
+                'Smokes'=>$smokes,
+                'AboutMe'=>$about,
+                'CountriesVisitList'=>$countryvisitedlist,
+                
             ]);
         
         // Create a key for a new post

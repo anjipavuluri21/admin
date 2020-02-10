@@ -120,7 +120,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">All Users</li>
+              <li class="breadcrumb-item active">Premium Users</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -138,7 +138,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                             <div class="card">
                                 <div class="card-header">
 
-                                    <h3 class="card-title">List User</h3>
+                                    <h3 class="card-title">Premium Users</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -161,16 +161,60 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                                             </tr>
                                         </thead>
                                         <tbody> 
+                                        <?php 
+include_once('database.php');
+
+$reference = $database->getReference('Users')
+                ->orderByChild('UserStatus')
+                ->equalTo("1_1_1_1_0")
+                ->getSnapshot()
+                ->getValue();
+                // ->numChildren();
+                // var_dump($reference);
+           
+
+                $reference1 = $database->getReference('Users')
+                ->orderByChild('UserStatus')
+                ->equalTo("1_1_1_0_0")
+                ->getSnapshot()
+                ->getValue();
+                // ->numChildren();
+            
+                $reference2 = $database->getReference('Users')
+                ->orderByChild('UserStatus')
+                ->equalTo("0_1_1_1_0")
+                ->getSnapshot()
+                ->getValue();
+                // ->numChildren();
+            
+                $reference3 = $database->getReference('Users')
+                ->orderByChild('UserStatus')
+                ->equalTo("0_1_1_0_0")
+                ->getSnapshot()
+                ->getValue();
+                // ->numChildren();
+              
+            
+                $Total_premium_users=$reference+$reference1+$reference2+$reference3;
+                
+                // print_r($Total_premium_users) ;
+
+                // foreach($Total_premium_users as $row =>$data1){
+                //     echo $data1['AboutMe']."\n";
+
+                // }
+?>
+
                                           <?php
                                            
-                                          include("retrive.php");
+                                        //   include("newusers_display.php");
                                           $i=1;
                                           $value = $database->getReference('Users')->orderByChild('DataRegistration')->getValue();
                                           $valuee=array_reverse($value);
-                                          foreach($valuee as $row =>$data1){
+                                          foreach($Total_premium_users as $row =>$data1){
                                           
-                                          //  print_r($data1);
-                                          //  exit;
+                                        //    print_r($data1);
+                                        //    exit;
                                           
                                             ?>
                                         <tr>

@@ -167,16 +167,29 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
         </div>
 
         <div class="form-group">
-          <label for="phone">Email</label>
+          <label for="email">Email</label>
           <input type="tel" name="email" class="form-control" id="phone" placeholder="" value="<?php echo $email;?>">
         </div>
 
         <div class="form-group">
+          <label for="about">AboutMe</label>
+          <input type="tel" name="about" class="form-control" id="phone" placeholder="" value="<?php echo $snapshot->getChild($_GET['userid'])->getChild('AboutMe')->getValue();?>">
+        </div>
+
+        <div class="form-group">
+          <label for="smoke">Smoke</label>
+          <input type="tel" name="smokes" class="form-control" id="phone" placeholder="" value="<?php echo $snapshot->getChild($_GET['userid'])->getChild('Smokes')->getValue();?>">
+        </div>
+        <div class="form-group">
+          <label for="countryvistedlist">Country Visited List</label>
+          <input type="tel" name="countryvistedlist" class="form-control" id="phone" placeholder="" value="<?php echo $snapshot->getChild($_GET['userid'])->getChild('CountriesVisitList')->getValue();?>">
+        </div>
+       
+        <div class="form-group">
          
           <input type="hidden" name="uid" class="form-control" id="hidden" placeholder="hidden" value="<?php echo $_GET['userid'];?>">
         </div>
-
-              
+   
     </div>
   </div>
     <!--  row   -->

@@ -120,7 +120,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">All Users</li>
+              <li class="breadcrumb-item active">New Users</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -138,7 +138,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                             <div class="card">
                                 <div class="card-header">
 
-                                    <h3 class="card-title">List User</h3>
+                                    <h3 class="card-title">New Users</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -161,16 +161,36 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                                             </tr>
                                         </thead>
                                         <tbody> 
+                                        <?php 
+include('database.php');
+$data=date("Y/m/d") ;
+//  var_dump($data);
+$new_user = $database->getReference('Users')
+  ->orderByChild('DataRegistration')
+   ->startAt($data)
+//    ->getValue();
+  // ->endAt('2020/01/07')
+  
+    ->getSnapshot()
+       ->getValue();
+
+//   ->numChildren();
+//   print_r($new_user);
+
+  
+
+?>
+
                                           <?php
                                            
-                                          include("retrive.php");
+                                        //   include("newusers_display.php");
                                           $i=1;
-                                          $value = $database->getReference('Users')->orderByChild('DataRegistration')->getValue();
-                                          $valuee=array_reverse($value);
-                                          foreach($valuee as $row =>$data1){
+                                          //$value = $database->getReference('Users')->orderByChild('DataRegistration')->getValue();
+                                        //   $valuee=array_reverse($value);
+                                          foreach($new_user as $row =>$data1){
                                           
-                                          //  print_r($data1);
-                                          //  exit;
+                                        //    print_r($data1);
+                                        //    exit;
                                           
                                             ?>
                                         <tr>

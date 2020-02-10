@@ -12,11 +12,9 @@ $storage = (new Factory())
     // $bucket->upload(
     //     fopen('photos/Image_Origin.jpg', 'r')
     // );
-    $object = $bucket->object('Image_Size_104.jpg');
-        $object->downloadToFile('photos/Image_Size_104.jpg');
+    $object = $bucket->object('Image_Size_1024.jpg');
+    $object->downloadToFile('photos/Image_Size_1024.jpg');
         
         echo $object;
-
-
 
 ?>

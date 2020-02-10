@@ -14,7 +14,7 @@
                 foreach ($ref as $row) {
                     $country = $row['Country'];
                     $gender = $row['gender'];
-                
+                    
                     $counts[$country] = $counts[$country] ?? [];
                     $counts[$country][$gender] = $counts[$country][$gender] ?? 0;
                 
@@ -22,10 +22,4 @@
                 }
                 print_r($counts); 
       
-                
-
-                
-                
-
-
 ?>

@@ -36,7 +36,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.html" class="brand-link">
-    <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px">
+    <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"> Travelmates
       <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -151,12 +151,65 @@
                                         $countries = array_unique(array_column($ref, 'Country'));
                                         // print_r($countries);
                                         $i=1;
-                                        foreach($countries as $key=>$value){ ?>
+                                        foreach($countries as $key=>$value){
+                                          $counts = [];
+                                          $genderCount=0;
+                                          $maleCount=0;
+                                          $femaleCount=0;
+
+
+                foreach ($ref as $row) {
+                    $country = $row['Country'];
+                    $gender = $row['Gender'];
+                
+                    $counts[$country] = $counts[$country] ?? [];
+                    $counts[$country][$gender] = $counts[$country][$gender] ?? 0;
+                   
+                    $genderCount=$counts[$country][$gender]+$genderCount; 
+                  // print_r($counts[$country][$gender] );exit;
+                  // if($counts[$country][$gender]=="Male"){
+
+                  //   $maleCount=$counts[$country][$gender]+$maleCount; 
+
+                  // }
+                  // else{
+                  //   $femaleCount=$counts[$country][$gender]+$femaleCount; 
+                  // }
+
+                
+                    $counts[$country][$gender]++;    
+                }
+                // echo "<pre>";
+                // print_r($counts[$country]);  
+                // echo "<br>"; 
+                // $malearray=array();
+                foreach($counts as $key=>$gencount){
+                  // print_r (@$gencount); 
+                  // echo $key;
+                    foreach($gencount as $test=>$gendername){
+                      
+                      // echo $test."--".$gendername;
+                      if($key==$value){
+                        if($test=="Male"){
+
+                          $maleCount= $gendername;
+  
+  
+                        }else{
+                          $femaleCount= $gendername;
+                        }
+
+                      }
+                      
+                  }
+                  
+                }
+                                          ?>
                                         <tr>
                                                 <td><?php echo $i;?></td>
                                                 <td><?php echo $value;?></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><?php echo  $maleCount;?></td>
+                                                <td><?php echo  $femaleCount;?></td>
 
                                             </tr>
 
@@ -165,7 +218,6 @@
        
 ?>
 
-                 
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -178,7 +230,6 @@
                 </section>
                 <!-- /.content -->
       
-    
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
