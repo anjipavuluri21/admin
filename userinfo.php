@@ -11,6 +11,7 @@
     <?php 
     include('database.php');
     // echo $_GET['userid'];
+    // echo $_GET['token'];
     $reference = $database->getReference('Users');
     $snapshot = $reference->getSnapshot();
     $first_name = $snapshot->getChild($_GET['userid'])->getChild('FirstName')->getValue();
@@ -44,12 +45,9 @@
     <p><strong>Gender:</strong> <?php echo $gender;?></p>
     <p><strong>Premium:</strong> <?php echo $Premium;?></p>
     <p><strong>Status:</strong> <?php echo $status;?>
-    <p><img src="https://console.firebase.google.com/u/0/project/socialapptest1-4f4d3.appspot.com/storage/o/Image_Origin.jpg?alt=media&token=1745d3c2-2f26-4a79-b6f4-7c64f908bed2"></p>
-
-    
-</p>
     <p><strong>Smokes:</strong> <?php echo $smokes?></p>
-</div>
-
+    
+    
+<p><img src="https://firebasestorage.googleapis.com/v0/b/socialapptest1-4f4d3.appspot.com/o/UsersData%2<?php echo $_GET['userid'];?>%2FAvatar%2FImage_Origin.jpg?alt=media&token=17aaee60-fbe3-4729-b29d-88f1319e98e0"></p>
     </body>
 </html>
