@@ -49,9 +49,9 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"><?php echo $_SESSION["user_data"]["name"];?>
+      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"> <?php echo $_SESSION["user_data"]["name"];?>
       
-      
+       
       <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -133,7 +133,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner" >
@@ -172,26 +172,26 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <!-- <div class="col-lg-3 col-6"> -->
             <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-              <p style="text-align:center;">Online Users</p>
-                <h3 style="text-align:center;">495</h3>
+            <!-- <div class="small-box bg-success"> -->
+              <!-- <div class="inner"> -->
+              <!-- <p style="text-align:center;">Online Users</p> -->
+                <!-- <h3 style="text-align:center;">495</h3> -->
 
                
-                <p>Male: </p>
-                <p>Female:</p>
-              </div>
-              <div class="icon">
+                <!-- <p>Male: </p> -->
+                <!-- <p>Female:</p> -->
+              <!-- </div> -->
+              <!-- <div class="icon"> -->
                 
                 <!-- <i class="fas fa-signal"></i> -->
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+              <!-- </div> -->
+              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+            <!-- </div> -->
+          <!-- </div> -->
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
@@ -231,7 +231,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">

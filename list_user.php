@@ -142,7 +142,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    
+                                
                                     <table id="example1" class="table table-bordered table-striped" style="text-align: center;">
                                         <thead>
                                             <tr>
@@ -360,6 +360,8 @@ $('.openPopup').on('click', function () {
               });
 
 </script>
+
+
 
 </body>
 </html>

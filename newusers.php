@@ -185,8 +185,8 @@ $new_user = $database->getReference('Users')
                                            
                                         //   include("newusers_display.php");
                                           $i=1;
-                                          //$value = $database->getReference('Users')->orderByChild('DataRegistration')->getValue();
-                                        //   $valuee=array_reverse($value);
+                                          $value = $database->getReference('Users')->orderByChild('DataRegistration')->getValue();
+                                          $valuee=array_reverse($value);
                                           foreach($new_user as $row =>$data1){
                                           
                                         //    print_r($data1);
