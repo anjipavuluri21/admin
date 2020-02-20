@@ -374,7 +374,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use-->
-     <script src="https://firebase.google.com/docs/web/setup#available-libraries"></script> 
+<script src="https://firebase.google.com/docs/web/setup#available-libraries"></script> 
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> 
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> 

@@ -1,20 +1,34 @@
 <?php 
+include('database.php');
 require_once './vendor/autoload.php';
-use Kreait\Firebase\Factory;
-use Kreait\Firebase\Storage;
 use Google\Cloud\Storage\StorageClient;
+use Google\Cloud\Storage\Bucket;
 
+$storage = new StorageClient();
 
-$storage = (new Factory())
-    ->withDefaultStorageBucket('gs://socialapptest1-4f4d3.appspot.com')
-    ->createStorage();
-    $bucket = $storage->getBucket('UsersData/6EGY4iFscBPjs38CJfwDWPg6NrB2/Avatar'); 
-    // $bucket->upload(
-    //     fopen('photos/Image_Origin.jpg', 'r')
-    // );
-    $object = $bucket->object('Image_Size_1024.jpg');
-    $object->downloadToFile('photos/Image_Size_1024.jpg');
-        
-        echo $object;
+//  var_dump($storage);
+
+ $bucket = $storage->bucket('gs://socialapptest1-4f4d3.appspot.com');
+//  $buckets = $storage->buckets($bucket);
+
+ $buckets = $storage->buckets([
+     'prefix' => 'UsersData'
+ ]);
+
+//  foreach ($buckets as $bucket) {
+//      echo $bucket->name() . PHP_EOL;
+//  }
+
+//  var_dump($object);
+// $reference = $database->getReference('Users')
+//                 ->getSnapshot()
+//                 ->numChildren();
+//                 echo $reference;
+$reference2 = $storage->getReference()->getChild('UsersData')->getChild('0SDLvbcygvbFDkyjBTNgimPHMHf2')->getChild('Avatar/Image/Image_Origin.jpg')
+->getSnapshot();
+
+echo $reference2;
+//Firebase.Storage.StorageReference avatar_ref = Storage.RootReference.Child(AppSettings.RootUserStorageKey).Child(_request.Id).Child(AppSettings.UserAvatarKey + "/" + "Image_" + _request.PicName + ".jpg");
+
 
 ?>
