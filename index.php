@@ -244,7 +244,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                 ->numChildren();
                 // var_dump($reference);
            
-
                 $reference1 = $database->getReference('Users')
                 ->orderByChild('UserStatus')
                 ->equalTo("1_1_1_0_0")
@@ -263,7 +262,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
                 ->getSnapshot()
                 ->numChildren();
               
-            
                 $Total_premium_users=$reference+$reference1+$reference2+$reference3;
                 
                 echo "$Total_premium_users";

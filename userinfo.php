@@ -46,8 +46,6 @@
     <p><strong>Premium:</strong> <?php echo $Premium;?></p>
     <p><strong>Status:</strong> <?php echo $status;?>
     <p><strong>Smokes:</strong> <?php echo $smokes?></p>
-    
-    
-<p><img src="https://firebasestorage.googleapis.com/v0/b/socialapptest1-4f4d3.appspot.com/o/UsersData%2<?php echo $_GET['userid'];?>%2FAvatar%2FImage_Origin.jpg?alt=media&token=<?php echo $_GET['token'];?>"></p>
+    <p><img src="https://www.googleapis.com/storage/v1/b/socialapptest1-4f4d3.appspot.com/o/UsersData%2F0SDLvbcygvbFDkyjBTNgimPHMHf2%2FAvatar%2FImage_Origin.jpg"></p>
     </body>
 </html>
