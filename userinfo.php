@@ -3,7 +3,7 @@
 <html>
     <head>
     <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>dist/css/adminlte.css">
-  
+    <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   
 </script> 
     </head>
@@ -11,7 +11,6 @@
     <?php 
     include('database.php');
     // echo $_GET['userid'];
-    // echo $_GET['token'];
     $reference = $database->getReference('Users');
     $snapshot = $reference->getSnapshot();
     $first_name = $snapshot->getChild($_GET['userid'])->getChild('FirstName')->getValue();
@@ -46,6 +45,53 @@
     <p><strong>Premium:</strong> <?php echo $Premium;?></p>
     <p><strong>Status:</strong> <?php echo $status;?>
     <p><strong>Smokes:</strong> <?php echo $smokes?></p>
-    <p><img src="https://www.googleapis.com/storage/v1/b/socialapptest1-4f4d3.appspot.com/o/UsersData%2F0SDLvbcygvbFDkyjBTNgimPHMHf2%2FAvatar%2FImage_Origin.jpg"></p>
+
+    <?php 
+require_once './vendor/autoload.php';
+
+use Google\Cloud\Storage\StorageClient;
+use Google\Cloud\Storage\Bucket;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+
+//include('database.php');
+$serviceAccount = ServiceAccount::fromJsonFile(__DIR__ .'/secret/socialapptest1-4f4d3-5d4d7d344d5b.json');
+
+$factory = (new Factory())->withServiceAccount($serviceAccount);
+
+$storage = $factory->createStorage();
+$bucket = $storage->getBucket('socialapptest1-4f4d3.appspot.com');
+//print_r($bucket->objects());exit;
+foreach ($bucket->objects() as $object) {
+    $data=  explode(' ',$object->name());
+    $object->gcsUri()."\n";
+    $info = $object->info();
+   
+    $info['userid_from_img']=explode('/',$info['id'])[2];
+    //print_r($info);
+
+    $search_result=array_search($_GET['userid'],$info, true);
+
+    //echo  $search_result;
+    //echo $userid_from_img .'image id';
+    //echo $_GET['userid'] .'user id';
+    //exit;
+    if($search_result != "" && $search_result != FALSE){
+       $img_path=$info['mediaLink'];
+       ?>
+      
+    <p>
+    <img src="<?php echo $img_path;?>" width="100" height="100"/>
+    </p>
+    
+    <?php
+    }else{
+        $img_path="";
+    }
+    
+}
+?>
+
+    
     </body>
 </html>

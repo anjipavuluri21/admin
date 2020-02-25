@@ -49,9 +49,9 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"> <?php echo $_SESSION["user_data"]["name"];?>
+      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"> Travelmates 
       
-       
+      
       <span class="brand-text font-weight-light"></span>
     </a>
 
