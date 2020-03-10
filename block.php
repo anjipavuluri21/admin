@@ -13,5 +13,7 @@ if($action == 0){
 if($action==1){
     $updatedUser = $auth->enableUser($uid);
 }
+$user = $auth->getUser($uid);
+echo $user;
 
 ?>

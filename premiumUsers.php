@@ -11,6 +11,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="dist/img/web.jpg" type="image/x-icon">
   <title>Travel Mates | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,14 +80,6 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="<?php echo PROJECT_BASEPATH;?>search.php" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
-              <p>Search User</p>
-            </a>
-          </li>
-         
-         
           <li class="nav-item">
             <a href="<?php echo PROJECT_BASEPATH;?>country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>

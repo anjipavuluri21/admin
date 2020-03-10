@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="dist/img/web.jpg" type="image/x-icon">
   <title>Travel Mates | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,15 +43,12 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          
+                   
          <li class="nav-item">
             <a href="index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -66,14 +64,6 @@
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="search.php" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
-              <p>Search User</p>
-            </a>
-          </li>
-         
-         
           <li class="nav-item">
             <a href="country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>
@@ -95,23 +85,23 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
+  
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">Dashboard</h1>
-          </div><!-- /.col -->
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Country</li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
     <!-- /.content-header -->
 
@@ -166,16 +156,6 @@
                     $counts[$country][$gender] = $counts[$country][$gender] ?? 0;
                    
                     $genderCount=$counts[$country][$gender]+$genderCount; 
-                  // print_r($counts[$country][$gender] );exit;
-                  // if($counts[$country][$gender]=="Male"){
-
-                  //   $maleCount=$counts[$country][$gender]+$maleCount; 
-
-                  // }
-                  // else{
-                  //   $femaleCount=$counts[$country][$gender]+$femaleCount; 
-                  // }
-
                 
                     $counts[$country][$gender]++;    
                 }
@@ -193,8 +173,7 @@
                         if($test=="Male"){
 
                           $maleCount= $gendername;
-  
-  
+                          
                         }else{
                           $femaleCount= $gendername;
                         }

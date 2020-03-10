@@ -3,7 +3,7 @@
 <html>
     <head>
     <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>dist/css/adminlte.css">
-    <link rel="stylesheet" href="<?php echo PROJECT_BASEPATH;?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    
   
 </script> 
     </head>
@@ -83,7 +83,6 @@ foreach ($bucket->objects() as $object) {
     <p>
     <img src="<?php echo $img_path;?>" width="100" height="100"/>
     </p>
-    
     <?php
     }else{
         $img_path="";
@@ -91,7 +90,5 @@ foreach ($bucket->objects() as $object) {
     
 }
 ?>
-
-    
     </body>
 </html>

@@ -2,12 +2,11 @@
 
 include("retrive.php");
 
-
 //defining base url
- $url_details=$_SERVER['HTTP_HOST'];
+$url_details=$_SERVER['HTTP_HOST'];
 $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']);/*For Getting the project(Hosting Name)*/
- $final_url='http://'.$url_details;
- define('PROJECT_BASEPATH',$final_url);
+$final_url='http://'.$url_details;
+define('PROJECT_BASEPATH',$final_url);
 
 ?>
 <!DOCTYPE html>
@@ -43,14 +42,14 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper">$user = $auth->getUser('some-uid');
 
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px">
+      <img src="dist/img/web.jpg" alt="travelmates logo" height="50px" width="50px"> TravelMates
       <span class="brand-text font-weight-light"></span>
     </a>
 
@@ -79,14 +78,8 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="<?php echo PROJECT_BASEPATH;?>search.php" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
-              <p>Search User</p>
-            </a>
-          </li>
          
-         
+          
           <li class="nav-item">
             <a href="<?php echo PROJECT_BASEPATH;?>country.php" class="nav-link">
               <i class="nav-icon fas fa-flag"></i>

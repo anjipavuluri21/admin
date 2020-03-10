@@ -79,12 +79,7 @@ $url_details.=str_replace(basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_
             </a>
           </li>
           
-          <li class="nav-item">
-            <a href="<?php echo PROJECT_BASEPATH;?>search.php" class="nav-link">
-              <i class="nav-icon fas fa-search"></i>
-              <p>Search User</p>
-            </a>
-          </li>
+          
          
          
           <li class="nav-item">
